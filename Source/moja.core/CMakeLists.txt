@@ -4,7 +4,7 @@ string(TOUPPER "${PACKAGE}" LIBNAME_EXPORT)
 
 include(${CMAKE_MODULE_PATH}/generate_product_version.cmake) 
 
-find_package(Poco REQUIRED Foundation JSON)
+include(${CMAKE_SOURCE_DIR}/cmake/Modules/PocoConfig.cmake)
 find_package(Boost COMPONENTS log log_setup REQUIRED)
 
 if (MSVC)
