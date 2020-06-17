@@ -17,7 +17,7 @@ jobs:
         include:
           - os: windows-latest
             triplet: x64-windows
-            vcpkgCommitId: '8a9a97315aefb3f8bc5d81bf66ca0025938b9c91'
+            vcpkgGitUrl: 'https://github.com/moja-global/vcpkg'
             vcpkgPackages: 'boost-test:x64-windows boost-program-options:x64-windows boost-log:x64-windows turtle:x64-windows zipper:x64-windows poco:x64-windows libpq:x64-windows gdal:x64-windows sqlite3:x64-windows boost-ublas:x64-windows'
 
     steps:
@@ -36,7 +36,7 @@ jobs:
           vcpkgArguments: '${{ matrix.vcpkgPackages }}'
           vcpkgTriplet: '${{ matrix.triplet }}'
           vcpkgDirectory: '${{ runner.workspace }}/b/vcpkg'
-          vcpkgGitCommitId: '${{ matrix.vcpkgCommitId }}'
+          vcpkgGitUrl: '${{ matrix.vcpkgGitUrl }}'
       - name: dir
         run: find $RUNNER_WORKSPACE
         shell: bash
