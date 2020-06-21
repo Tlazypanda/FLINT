@@ -27,6 +27,10 @@ jobs:
           submodules: true
 
       - uses: lukka/get-cmake@latest
+      - name: Set vcpkg's response file path used as part of cache's key.
+        uses: lukka/set-shell-env@master
+        with:
+          VCPKGRESPONSEFILE: ${{ github.workspace }}/Source/vcpkg_${{ matrix.triplet }}.txt
       - name: Restore artifacts, or run vcpkg, build and cache artifacts
         uses: lukka/run-vcpkg@master
         id: runvcpkg
@@ -36,6 +40,7 @@ jobs:
           vcpkgDirectory: '${{ github.workspace }}/b/vcpkg'
           vcpkgGitUrl: '${{ matrix.vcpkgGitUrl }}'
           vcpkgGitCommitId: '${{ matrix.vcpkgGitCommitId }}'
+          appendedCacheKey: ${{ hashFiles( env.VCPKGRESPONSEFILE ) }}
       - name: dir
         run: find $RUNNER_WORKSPACE
         shell: bash
