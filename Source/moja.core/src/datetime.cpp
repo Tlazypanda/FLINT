@@ -24,7 +24,7 @@ DateTime& DateTime::operator+=(const Timespan& span) {
 }
 
 DateTime& DateTime::addYears(int years) {
-   _date += date::years(years);
+         _date = _date + date::years(years);
    return *this;
 }
 
