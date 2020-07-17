@@ -1,0 +1,16 @@
+name: lint
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+jobs:
+  job:
+    name: codecheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: C++ code check using clang/cppcheck/flawfinder
+        uses: Tlazypanda/cpp-clang-check@0.1
+    env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
