@@ -11,6 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: C++ code check using clang/cppcheck/flawfinder
-        uses: Tlazypanda/cpp-clang-check@0.11
+        uses: Tlazypanda/cpp-clang-check@0.12
     env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
